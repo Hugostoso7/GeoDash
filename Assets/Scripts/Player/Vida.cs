@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
@@ -99,6 +100,14 @@ public class Vida : MonoBehaviour
             {
                 LevarDano();
             }
+        }
+    }
+
+    private void Morrer()
+    {
+        if (vida <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
