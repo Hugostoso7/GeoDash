@@ -10,7 +10,6 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] float m_jumpForce = 7.5f;
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] bool m_noBlood = false;
-    [SerializeField] GameObject m_slideDust;
     [SerializeField] Transform alvo;
     [SerializeField] float lugarAlvo;
     private GameObject pontoAtaque;

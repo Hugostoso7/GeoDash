@@ -17,7 +17,9 @@ public class CorridaBoss : MonoBehaviour
     private Vector2 direcaoDash;
     private Vector2 direcaoTiro;
     private Rigidbody2D rb;
+    private GameObject ataque;
     private int dir = 1;
+    private bool atak = true;
 
 
     private void Start()
@@ -35,7 +37,6 @@ public class CorridaBoss : MonoBehaviour
         tempoDeCorrida -= Time.deltaTime;
         tempoDePulo -= Time.deltaTime;
         tempoDeTiro -= Time.deltaTime;
-        TiroBoss();
     }
 
     private void MovementInimimgo()
@@ -72,19 +73,37 @@ public class CorridaBoss : MonoBehaviour
 
     private void TiroBoss()
     {
-        //Quaternion quaternion = alvo.rotation;
-        //if (tempoDeTiro <= 0)
-        //{
-        //    GameObject tiro = Instantiate(tiroPrefab, miraPrefab.transform.position, miraPrefab.transform.rotation);
-        //    Rigidbody2D rbTiro = tiro.GetComponent<Rigidbody2D>();
-        //    rbTiro.AddForce(Vector2.right * forcaTiro, ForceMode2D.Impulse);
-        //    tempoDeTiro = 10;
-        //    Destroy(tiro);
-        //}
+        if (tempoDeTiro <= 0 && atak)
+        {
+            ataque = Instantiate(tiroPrefab, miraPrefab.transform.position, miraPrefab.transform.rotation);
+            Rigidbody2D rbAtaque = ataque.GetComponent<Rigidbody2D>();
+            rbAtaque.AddForce(miraPrefab.transform.forward * forcaTiro, ForceMode2D.Force);
+            StartCoroutine(TempoDeAtak());
+        }
     }
 
+    IEnumerator TempoDeAtak()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(ataque);
+        atak = false;
+        yield return new WaitForSeconds(1f);
+        atak = true;
+        tempoDeTiro = 10;
+    }
+
+    IEnumerator RotBossDir()
+    {
+        transform.position += new Vector3(1 * 0 * Time.deltaTime, 0, 0);
+        yield return new WaitForSeconds(2.5f);
+        transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 6)
+        {
+            StartCoroutine(RotBossDir());
+        }
         if (collision.gameObject.layer == 6)
         {
             dir = 2;
