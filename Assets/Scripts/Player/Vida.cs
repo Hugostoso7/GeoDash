@@ -22,6 +22,7 @@ public class Vida : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = rb.GetComponent<Animator>();
+
         if (imagemVida == null)
         {
             GameObject.Find("ImagemVida");
@@ -56,6 +57,11 @@ public class Vida : MonoBehaviour
             rb.Sleep();
             estahVivo = false;
         }
+        
+        if (!estahVivo && inimigo != null && player == null)
+        {
+            Destroy(inimigo);
+        }
     }
 
     private void ExibirVida()
@@ -86,6 +92,11 @@ public class Vida : MonoBehaviour
         if (inimigo != null && player == null)
         {
             if (collision.gameObject.tag == "PontoAtaque")
+            {
+                LevarDano();
+            }
+
+            if (collision.gameObject.tag == "PontoDanoInim")
             {
                 LevarDano();
             }
