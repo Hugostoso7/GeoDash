@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Unity.Mathematics;
+using UnityEditor.ShaderGraph.Internal;
 
 public class HeroKnight : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class HeroKnight : MonoBehaviour
     [SerializeField] float m_rollForce = 6.0f;
     [SerializeField] bool m_noBlood = false;
     [SerializeField] GameObject m_slideDust;
+    [SerializeField] Transform alvo;
+    [SerializeField] float lugarAlvo;
     private GameObject pontoAtaque;
+    private SpriteRenderer m_spriteRenderer;
 
     private Animator m_animator;
     private Rigidbody2D m_body2d;
@@ -37,6 +41,7 @@ public class HeroKnight : MonoBehaviour
         vida = GetComponent<Vida>();
         m_animator = GetComponent<Animator>();
         m_body2d = GetComponent<Rigidbody2D>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
         pontoAtaque = GameObject.Find("PontoAtaque");
         m_groundSensor = transform.Find("GroundSensor").GetComponent<Sensor_HeroKnight>();
         m_wallSensorR1 = transform.Find("WallSensor_R1").GetComponent<Sensor_HeroKnight>();
@@ -44,6 +49,7 @@ public class HeroKnight : MonoBehaviour
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
         pontoAtaque.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -101,12 +107,14 @@ public class HeroKnight : MonoBehaviour
         if (inputX > 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
+            pontoAtaque.transform.position = new Vector3(alvo.position.x * lugarAlvo, alvo.position.y, 0);
             m_facingDirection = 1;
         }
 
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
+            pontoAtaque.transform.position = new Vector3(alvo.position.x * lugarAlvo, alvo.position.y, 0);
             m_facingDirection = -1;
         }
 
@@ -151,6 +159,8 @@ public class HeroKnight : MonoBehaviour
         {
             m_currentAttack++;
             pontoAtaque.SetActive(true);
+
+            
 
             // Loop back to one after third attack
             if (m_currentAttack > 3)
