@@ -18,6 +18,7 @@ public class CorridaBoss : MonoBehaviour
     private Vector2 direcaoTiro;
     private Rigidbody2D rb;
     private GameObject ataque;
+    private SpriteRenderer sR;
     private int dir = 1;
     private bool atak = true;
 
@@ -25,78 +26,75 @@ public class CorridaBoss : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sR = GetComponent<SpriteRenderer>();
         inputH = Input.GetAxis("Horizontal");
         direcaoTiro = alvo.position - transform.position;
+        miraPrefab = GameObject.Find("TiroMira");
     }
 
     private void Update()
     {
         MovementInimimgo();
-        Runboss();
-        Puloboss();
-        tempoDeCorrida -= Time.deltaTime;
-        tempoDePulo -= Time.deltaTime;
-        tempoDeTiro -= Time.deltaTime;
     }
 
     private void MovementInimimgo()
     {
-        if (dir == 1)
+        if (dir != 0)
         {
-            transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
-        }
-        else if (dir == 2)
-        {
-            transform.position += new Vector3(-1 * velocidade * Time.deltaTime, 0, 0);
+            if (dir == 1)
+            {
+                transform.position += new Vector3(dir * velocidade * Time.deltaTime, 0, 0);
+                sR.flipX = false;
+                miraPrefab.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (dir == -1)
+            {
+                transform.position += new Vector3(dir * velocidade * Time.deltaTime, 0, 0);
+                sR.flipX = true;
+                miraPrefab.GetComponent<SpriteRenderer>().flipX = true;
+            }
         }
     }
 
     private void Runboss()
     {
-        if (tempoDeCorrida <= 0)
-        {
-            direcaoDash = alvo.position - transform.position;
-            rb.AddForce(Vector2.right * direcaoDash, ForceMode2D.Impulse);
-            tempoDeCorrida = 6;
-        }
+        direcaoDash = alvo.position - transform.position;
+        rb.AddForce(Vector2.right * direcaoDash, ForceMode2D.Impulse);
+        tempoDeCorrida = 6;
     }
 
     private void Puloboss()
     {
-        if (tempoDePulo <= 0)
-        {
-            direcaoDash = alvo.position - transform.position * forcaPulo;
-            rb.AddForce(Vector2.up * direcaoDash, ForceMode2D.Impulse);
-            tempoDePulo = 8;
-        }
+        direcaoDash = alvo.position - transform.position * forcaPulo;
+        rb.AddForce(Vector2.up * direcaoDash, ForceMode2D.Impulse);
+        tempoDePulo = 8;
     }
 
     private void TiroBoss()
     {
-        if (tempoDeTiro <= 0 && atak)
-        {
-            ataque = Instantiate(tiroPrefab, miraPrefab.transform.position, miraPrefab.transform.rotation);
-            Rigidbody2D rbAtaque = ataque.GetComponent<Rigidbody2D>();
-            rbAtaque.AddForce(miraPrefab.transform.forward * forcaTiro, ForceMode2D.Force);
-            StartCoroutine(TempoDeAtak());
-        }
-    }
-
-    IEnumerator TempoDeAtak()
-    {
-        yield return new WaitForSeconds(2f);
-        Destroy(ataque);
-        atak = false;
-        yield return new WaitForSeconds(1f);
-        atak = true;
-        tempoDeTiro = 10;
+        Instantiate(tiroPrefab, miraPrefab.transform.position, miraPrefab.transform.rotation);
     }
 
     IEnumerator RotBossDir()
     {
-        transform.position += new Vector3(1 * 0 * Time.deltaTime, 0, 0);
-        yield return new WaitForSeconds(2.5f);
-        transform.position += new Vector3(1 * velocidade * Time.deltaTime, 0, 0);
+        dir = 0;
+        transform.position += new Vector3(1 * dir * Time.deltaTime, 0, 0);
+        TiroBoss();
+        yield return new WaitForSeconds(1f);
+        dir = -1;
+        yield return new WaitForSeconds(1f);
+        Puloboss();
+    }
+
+    IEnumerator RotBossEsq()
+    {
+        dir = 0;
+        transform.position += new Vector3(1 * dir * Time.deltaTime, 0, 0);
+        TiroBoss();
+        yield return new WaitForSeconds(1f);
+        dir = 1;
+        yield return new WaitForSeconds(1f);
+        Puloboss();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -104,13 +102,9 @@ public class CorridaBoss : MonoBehaviour
         {
             StartCoroutine(RotBossDir());
         }
-        if (collision.gameObject.layer == 6)
-        {
-            dir = 2;
-        }
         else if (collision.gameObject.layer == 7)
         {
-            dir = 1;
+            StartCoroutine(RotBossEsq());
         }
     }
 }

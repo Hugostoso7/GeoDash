@@ -8,6 +8,9 @@ TagManager:
   - PontoAtaque
   - Chao
   - Dano
+  - Grounded
+  - Magia
+  - Tiro
   layers:
   - Default
   - TransparentFX

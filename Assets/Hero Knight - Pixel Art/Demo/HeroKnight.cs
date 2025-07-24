@@ -204,7 +204,7 @@ public class HeroKnight : MonoBehaviour
             vida.LevarDano();
         }
 
-        if (collision.gameObject.tag == "Chao")
+        if (collision.gameObject.tag == "Grounded")
         {
             m_grounded = true;
         }
