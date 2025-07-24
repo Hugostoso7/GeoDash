@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7272356864664382754
+--- !u!1 &142060923752731453
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6603396785359734737}
-  - component: {fileID: 6227972238538558610}
+  - component: {fileID: 1937060069266092416}
+  - component: {fileID: 9048700311921910601}
   m_Layer: 6
-  m_Name: dir
+  m_Name: Dir
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6603396785359734737
+--- !u!4 &1937060069266092416
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272356864664382754}
+  m_GameObject: {fileID: 142060923752731453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.31, y: -13.88, z: -0.043759614}
+  m_LocalPosition: {x: -63.61, y: -13.700001, z: -0.043759614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &6227972238538558610
+--- !u!58 &9048700311921910601
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7272356864664382754}
+  m_GameObject: {fileID: 142060923752731453}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1

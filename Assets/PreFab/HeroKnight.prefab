@@ -217,11 +217,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5034bc83802944c9bca57c55e08978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 4
-  m_jumpForce: 7.5
+  m_speed: 6
+  m_jumpForce: 5
   m_rollForce: 6
   m_noBlood: 0
-  m_slideDust: {fileID: 1038168246061390451, guid: 8b8c8cc6774fb074cb9139cc631b108e, type: 3}
+  alvo: {fileID: 0}
+  lugarAlvo: 0
 --- !u!95 &3909526273414984124
 Animator:
   serializedVersion: 7
@@ -386,7 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 4
   danoDoInimigo: 1
-  imagemVida: {fileID: 0}
+  imagemVida: {fileID: 4440884883137303552, guid: cff498f7cbe506b4cb85817afb275b20, type: 3}
   sVida4: {fileID: -5152062083045915708, guid: ac703bf2d57943e4ea1823bc8d8be9e8, type: 3}
   sVida3: {fileID: -581607013491851901, guid: ac703bf2d57943e4ea1823bc8d8be9e8, type: 3}
   sVida2: {fileID: -8471393736113874461, guid: ac703bf2d57943e4ea1823bc8d8be9e8, type: 3}

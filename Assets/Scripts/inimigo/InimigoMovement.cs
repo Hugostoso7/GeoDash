@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class InimigoMovement : MonoBehaviour
@@ -30,15 +31,17 @@ public class InimigoMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 6)
         {
             dir = 2;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (collision.gameObject.layer == 7)
         {
             dir = 1;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }
