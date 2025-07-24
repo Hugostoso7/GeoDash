@@ -157,6 +157,7 @@ public class HeroKnight : MonoBehaviour
         {
             m_currentAttack++;
             pontoAtaque.SetActive(true);
+            StartCoroutine(Tempo());
 
             // Loop back to one after third attack
             if (m_currentAttack > 3)
@@ -172,6 +173,12 @@ public class HeroKnight : MonoBehaviour
             // Reset timer
             m_timeSinceAttack = 0.0f;
         }
+    }
+
+    IEnumerator Tempo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        pontoAtaque.SetActive(false);
     }
 
     private void Morrer()

@@ -1,10 +1,11 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
 {
-    [SerializeField] public int vida = 3;
+    [SerializeField] private int vida = 3;
     [SerializeField] private int danoDoInimigo = 1;
     [SerializeField] private Image imagemVida;
     [SerializeField] private Sprite sVida4;
@@ -67,25 +68,29 @@ public class Vida : MonoBehaviour
 
     private void ExibirVida()
     {
-        imagemVida.enabled = true;
-        if (vida == 1)
+        if (player != null)
         {
-            imagemVida.sprite = sVida1;
+            imagemVida.enabled = true;
+            if (vida == 1)
+            {
+                imagemVida.sprite = sVida1;
+            }
+
+            else if (vida == 2)
+            {
+                imagemVida.sprite = sVida2;
+            }
+
+            else if (vida == 3)
+            {
+                imagemVida.sprite = sVida3;
+            }
+            else if (vida == 4)
+            {
+                imagemVida.sprite = sVida4;
+            }
         }
 
-        else if (vida == 2)
-        {
-            imagemVida.sprite = sVida2;
-        }
-
-        else if (vida == 3)
-        {
-            imagemVida.sprite = sVida3;
-        }
-        else if (vida == 4)
-        {
-            imagemVida.sprite = sVida4;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
