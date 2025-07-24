@@ -101,7 +101,7 @@ public class Vida : MonoBehaviour
                 LevarDano();
             }
 
-            if (collision.gameObject.tag == "Tiro" && player != null && inimigo == null && estahVivo)
+            if (collision.gameObject.tag == "Tiro" && player != null && inimigo == null)
             {
                 LevarDano();
             }
