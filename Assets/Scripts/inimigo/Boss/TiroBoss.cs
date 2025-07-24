@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,9 +22,10 @@ public class TiroBoss : MonoBehaviour
         direcao.y = rb.gravityScale;
         transform.position += direcao * forcaTiro * Time.deltaTime;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collider)
+        if (!collider || collision.gameObject.tag == "Player")
         {
             Instantiate(destroyTiroPreFab, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(this.gameObject);
