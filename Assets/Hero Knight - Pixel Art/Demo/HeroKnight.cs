@@ -48,7 +48,6 @@ public class HeroKnight : MonoBehaviour
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
         pontoAtaque.SetActive(false);
-
     }
 
     // Update is called once per frame
@@ -158,8 +157,6 @@ public class HeroKnight : MonoBehaviour
         {
             m_currentAttack++;
             pontoAtaque.SetActive(true);
-
-            
 
             // Loop back to one after third attack
             if (m_currentAttack > 3)
