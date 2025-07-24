@@ -35,6 +35,7 @@ public class Vida : MonoBehaviour
         if (!estahVivo && player != null && inimigo == null)
         {
             imagemVida.sprite = gameOver;
+            SceneManager.LoadScene("GameOver");
         }
     }
     public bool EstaVivo()
@@ -100,19 +101,7 @@ public class Vida : MonoBehaviour
             {
                 LevarDano();
             }
-
-            if (collision.gameObject.tag == "Tiro" && player != null && inimigo == null && estahVivo)
-            {
-                LevarDano();
-            }
         }
     }
 
-    private void Morrer()
-    {
-        if (vida <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-    }
 }
