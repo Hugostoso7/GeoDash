@@ -121,4 +121,15 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Narrativa1BW");
     }
 
+    public void Mapa()
+    {
+        SceneManager.LoadScene("mapa");
+
+    }
+
+
+
+
+
+
 }
