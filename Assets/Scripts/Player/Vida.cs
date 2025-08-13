@@ -18,6 +18,7 @@ public class Vida : MonoBehaviour
     private Rigidbody2D rb;
     private bool estahVivo = true;
     private Animator anim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -97,12 +98,33 @@ public class Vida : MonoBehaviour
     {
         if (inimigo != null && player == null)
         {
-            if (collision.gameObject.tag == "PontoAtaque")
+            if (collision.gameObject.CompareTag("PontoAtaque"))          {
+                LevarDano();
+            }
+        }
+
+        if (inimigo == null && player != null)
+        {
+            if (collision.gameObject.CompareTag("Tiro"))
             {
                 LevarDano();
             }
+        }
+    }
 
-            if (collision.gameObject.tag == "PontoDanoInim")
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (inimigo != null && player == null)
+        {
+            if (collision.gameObject.CompareTag("PontoAtaque"))
+            {
+                LevarDano();
+            }
+        }
+
+        if (inimigo == null && player != null)
+        {
+            if (collision.gameObject.CompareTag("Tiro"))
             {
                 LevarDano();
             }

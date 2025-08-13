@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1af29546fd4e03f4890a7d2bf4314b46, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2027857, g: 0.29966754, b: 0.8773585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -132,7 +132,9 @@ MonoBehaviour:
   destroyTiroPreFab: {fileID: 3400813547834974276, guid: 7c14cc992cbd840418f99d0e999caedc, type: 3}
   forcaTiro: 5
   alvo: {fileID: 2035064468222082829, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
-  collider: {fileID: 2423019808923096286, guid: a16b90eb1cff05d4695d8d796ac79c62, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 759
 --- !u!58 &6962853922630139276
 CircleCollider2D:
   m_ObjectHideFlags: 0

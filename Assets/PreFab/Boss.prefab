@@ -200,8 +200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 5
-  tempoDeCorrida: 6
-  tempoDePulo: 8
   tempoDeTiro: 10
   forcaPulo: 5
   forcaTiro: 5

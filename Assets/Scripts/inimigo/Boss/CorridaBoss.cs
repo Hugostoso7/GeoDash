@@ -5,30 +5,22 @@ using UnityEngine;
 public class CorridaBoss : MonoBehaviour
 {
     [SerializeField] private float velocidade = 4f;
-    [SerializeField] private float tempoDeCorrida = 6f;
-    [SerializeField] private float tempoDePulo = 8f;
     [SerializeField] private float tempoDeTiro = 10f;
     [SerializeField] private float forcaPulo = 5f;
     [SerializeField] private float forcaTiro = 5f;
     [SerializeField] private Transform alvo;
     [SerializeField] private GameObject tiroPrefab;
     [SerializeField] private GameObject miraPrefab;
-    private float inputH;
     private Vector2 direcaoDash;
-    private Vector2 direcaoTiro;
     private Rigidbody2D rb;
-    private GameObject ataque;
     private SpriteRenderer sR;
     private int dir = 1;
-    private bool atak = true;
 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sR = GetComponent<SpriteRenderer>();
-        inputH = Input.GetAxis("Horizontal");
-        direcaoTiro = alvo.position - transform.position;
         miraPrefab = GameObject.Find("TiroMira");
     }
 
@@ -56,18 +48,10 @@ public class CorridaBoss : MonoBehaviour
         }
     }
 
-    private void Runboss()
-    {
-        direcaoDash = alvo.position - transform.position;
-        rb.AddForce(Vector2.right * direcaoDash, ForceMode2D.Impulse);
-        tempoDeCorrida = 6;
-    }
-
     private void Puloboss()
     {
         direcaoDash = alvo.position - transform.position * forcaPulo;
         rb.AddForce(Vector2.up * direcaoDash, ForceMode2D.Impulse);
-        tempoDePulo = 8;
     }
 
     private void TiroBoss()

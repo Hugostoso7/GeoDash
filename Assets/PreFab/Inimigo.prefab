@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4376337386715372892}
   - component: {fileID: 8696282137235193544}
   - component: {fileID: 747240071776731720}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Inimigo
   m_TagString: Dano
   m_Icon: {fileID: 0}
@@ -198,4 +198,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71242fdd93a00e748811dec826ddd62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 3
+  velocidade: 2
