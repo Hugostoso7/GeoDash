@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Unity.Mathematics;
-using UnityEditor.ShaderGraph.Internal;
 
 public class HeroKnight : MonoBehaviour
 {
