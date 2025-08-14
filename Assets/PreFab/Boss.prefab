@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2090874861957946878}
   - component: {fileID: 5409630648155151793}
   - component: {fileID: 206370767124226902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Dano
   m_Icon: {fileID: 0}

@@ -73,9 +73,9 @@ public class Menu : MonoBehaviour
         player.PlayOneShot(som);
     }
 
-    public void SelecionarPersonagem()
+    public void Reiniciar()
     {
-        SceneManager.LoadScene("SelecionarPersonagem");
+        SceneManager.LoadScene("SceneTest");
     }
 
     public void continueS()
